@@ -1,53 +1,67 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Generator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <main class="container">
-        <form action="/generate_recipe" method="post">
-            <h2>2021810009 김두영 Input 3 Ingredients</h2>
-            <input type="text" name="ingredient" placeholder="Ingredient 1" required>
-            <input type="text" name="ingredient" placeholder="Ingredient 2" required>
-            <input type="text" name="ingredient" placeholder="Ingredient 3" required>
+{% extends "base.html" %}
 
-            <label class="subheading" for="cuisine">Choose a cuisine:</label>
-            <select name="cuisine" id="cuisine">
-                {% for cuisine in cuisines %}
-                    <option value="{{ cuisine|lower|replace(' ', '_') }}">{{ cuisine }}</option>
-                {% endfor %}
-            </select>
+{% block content %}
+<main class="container py-5">
+    <form class="recipe-form mx-auto" action="/generate_recipe" method="post">
+        <h2 class="text-center mb-4">2021810009 김두영 Input 3 Ingredients</h2>
 
-            <label class="subheading" for="restrictions">Dietary Restrictions:</label>
-            <div class="checkbox-container">
-                {% for restriction in dietary_restrictions %}
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input
-                                type="checkbox"
-                                name="restrictions"
-                                value="{{ restriction|lower|replace(' ', '_') }}"
-                            >
-                            {{ restriction }}
-                        </label>
-                    </div>
-                {% endfor %}
-            </div>
+        <input
+            class="form-control mb-2"
+            type="text"
+            name="ingredient"
+            placeholder="Ingredient 1"
+            required
+        >
+        <input
+            class="form-control mb-2"
+            type="text"
+            name="ingredient"
+            placeholder="Ingredient 2"
+            required
+        >
+        <input
+            class="form-control mb-3"
+            type="text"
+            name="ingredient"
+            placeholder="Ingredient 3"
+            required
+        >
 
-            <label class="subheading" for="language">Choose a language:</label>
-            <select name="language" id="language">
-                {% for language, code in languages.items() %}
-                    <option value="{{ language }}" {% if code == "ko" %}selected{% endif %}>
-                        {{ language }}
-                    </option>
-                {% endfor %}
-            </select>
+        <label class="form-label fw-bold" for="cuisine">Choose a cuisine:</label>
+        <select class="form-select mb-3 select-short" name="cuisine" id="cuisine">
+            {% for cuisine in cuisines %}
+                <option value="{{ cuisine|lower|replace(' ', '_') }}">{{ cuisine }}</option>
+            {% endfor %}
+        </select>
 
-            <input type="submit" value="Generate Recipe">
-        </form>
-    </main>
-</body>
-</html>
+        <label class="form-label fw-bold" for="restrictions">Dietary Restrictions:</label>
+        <div class="checkbox-container mb-3">
+            {% for restriction in dietary_restrictions %}
+                <div class="form-check checkbox-group">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="restrictions"
+                        value="{{ restriction|lower|replace(' ', '_') }}"
+                        id="restriction-{{ loop.index }}"
+                    >
+                    <label class="form-check-label" for="restriction-{{ loop.index }}">
+                        {{ restriction }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+
+        <label class="form-label fw-bold" for="language">Choose a language:</label>
+        <select class="form-select mb-3 select-short" name="language" id="language">
+            {% for language, code in languages.items() %}
+                <option value="{{ language }}" {% if code == "ko" %}selected{% endif %}>
+                    {{ language }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <input class="btn btn-primary w-100" type="submit" value="Generate Recipe">
+    </form>
+</main>
+{% endblock %}

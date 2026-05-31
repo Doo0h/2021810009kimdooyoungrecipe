@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Recipe</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <main class="container">
-        <section class="result">
-            <h2>2021810009 김두영 Your Recipe:</h2>
-            <div class="recipe-content">
-                {{ recipe | safe }}
-            </div>
-            <a class="back-link" href="/">Generate another recipe</a>
-        </section>
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<main class="container py-5">
+    <section class="recipe-result mx-auto">
+        <h2 class="alert alert-success text-center">Generated Recipe</h2>
+        <h3 class="mb-4">2021810009 김두영 Your Recipe:</h3>
+        <div class="recipe-content">
+            {{ recipe | safe }}
+        </div>
+        <a class="btn btn-outline-primary mt-3" href="/">Generate another recipe</a>
+    </section>
+</main>
+{% endblock %}
