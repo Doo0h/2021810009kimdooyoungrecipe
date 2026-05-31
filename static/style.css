@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 720px;
+    margin: 50px auto;
+    padding: 0 16px;
+}
+
+form,
+.result {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select#cuisine,
+select#language {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+select#cuisine::placeholder,
+select#language::placeholder {
+    color: #999;
+}
+
+select#cuisine option,
+select#language option {
+    font-size: 16px;
+}
+
+.subheading {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.checkbox-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 400px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.checkbox-group {
+    flex: 0 0 calc(50% - 5px);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+label.checkbox-label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.ingredients {
+    color: #555;
+    font-weight: 700;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.recipe-content {
+    line-height: 1.6;
+    word-break: keep-all;
+}
+
+.recipe-content ul,
+.recipe-content ol {
+    padding-left: 24px;
+}

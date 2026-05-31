@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Recipe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="result">
+            <h2>2021810009 김두영 Your Recipe:</h2>
+            <div class="recipe-content">
+                {{ recipe | safe }}
+            </div>
+            <a class="back-link" href="/">Generate another recipe</a>
+        </section>
+    </main>
+</body>
+</html>
